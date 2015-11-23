@@ -25,7 +25,7 @@ def getHexDump(execPath):
 	# 2. If hexdump ran successfully, return the string retrieved. Otherwise, return None.
 	# The command for hexdump to return the list of bytes in the program in C++ byte format
 	# the command is hexdump -v -e '"0x" 1/1 "%02X" ","' progName
-	str = 'hexdump -v -e \'"0x" 1/1 "%02X" ","\'' + execPath
+	str = 'hexdump -v -e \'\"0x\" 1/1 \"%02X\" \",\"\'' + execPath
 	retVal = os.popen(str).read()
 	retVal = retVal[:-1]
 	return retVal
@@ -71,9 +71,9 @@ def generateHeaderFile(execList, fileName):
 	#				};
 	temp = ""
 	for progName in execList:
-		size = os.path.getSize(progName)
+		size = os.path.getsize(progName)
 		hexstr = getHexDump(progName)
-		temp += "\nnew char[" + size + "]{" + hexstr + "},"
+		temp += "\nnew char[" + str(size) + "]{" + hexstr + "},"
 	temp = temp[:-1]
 
 	headerFile.write(temp + "};\n\n")
@@ -90,8 +90,8 @@ def generateHeaderFile(execList, fileName):
 	# is the size of program 2, etc.
 	temp = ""
 	for progName in execList:
-		size = os.path.getSize(progName)
-		temp += size + ","
+		size = os.path.getsize(progName)
+		temp += str(size) + ","
 	temp = temp[:-1]
 	headerFile.write(temp + "};\n\n")
 
