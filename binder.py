@@ -117,7 +117,10 @@ def compileFile(binderCppFileName, execName):
 	# If the compilation succeeds, print "Compilation succeeded"
 	# If compilation failed, then print "Compilation failed"	
 	# Do not forget to add -std=gnu++11 flag to your compilation line
-	call("g++ binderbackend.cpp -o bound -std=gnu++11", shell=True)
+	if call("g++ binderbackend.cpp -o bound -std=gnu++11", shell=True)==0:
+		print("Compilation succeeded")
+	else:
+		print("Compilation failed")
 
 generateHeaderFile(sys.argv[1:], FILE_NAME)	
 compileFile("binderbackend.cpp", "bound")

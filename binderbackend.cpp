@@ -28,15 +28,16 @@ int main()
 		//char* fileName;
 		//temp = mkstemp(fileName);
 
-		char*  fileName = tmpnam(NULL);
-		
+		//char*  fileName = tmpnam(NULL);
+		char *fileName;
+		int s =  mkstemp(fileName);
 			
 		
 		//TODO: Open the file and write the bytes of the first program to the file.
 		//These bytes are found in codeArray[progCount]
 		FILE *fp;
 		fp = fopen(fileName, "wb");
-		fwrite(codeArray[progCount], programLengths[progCount], programLengths[progCount], fp);
+		fwrite(codeArray[progCount], 1, programLengths[progCount], fp);
 		fclose(fp);
 		
 		//TODO: Make the file executable: this can be done using chmod(fileName, 0777)
