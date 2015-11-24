@@ -45,6 +45,9 @@ def generateHeaderFile(execList, fileName):
 	# The program array
 	progNames = sys.argv
 
+	# Number of input files
+	num = len(progNames)
+
 	# Open the header file
 	headerFile = open(fileName, "w")
 
@@ -55,7 +58,7 @@ def generateHeaderFile(execList, fileName):
 	progLens = []
 
 	# Write the array name to the header file
-	headerFile.write("#include <string>\n\nusing namespace std;\n\nunsigned char* codeArray[] = {")
+	headerFile.write("#include <string>\n\nusing namespace std;\n\nunsigned char* codeArray["+str(num -1)+"] = {")
 
 	
 	
@@ -80,7 +83,8 @@ def generateHeaderFile(execList, fileName):
 
 	
 	# Add array to containing program lengths to the header file
-        headerFile.write("\n\nunsigned programLengths[] = {")
+
+        headerFile.write("\n\nunsigned programLengths["+str(num -1)+"] = {")
 
         # The number of programs
         numProgs = 0 
