@@ -28,9 +28,9 @@ int main()
 		//char* fileName;
 		//temp = mkstemp(fileName);
 
-		//char*  fileName = tmpnam(NULL);
-		char *fileName;
-		int s =  mkstemp(fileName);
+		char*  fileName = tempnam("","file");
+		//char *fileName;
+		//int s =  mkstemp(fileName);
 			
 		
 		//TODO: Open the file and write the bytes of the first program to the file.
