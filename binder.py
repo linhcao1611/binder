@@ -25,7 +25,7 @@ def getHexDump(execPath):
 	# 2. If hexdump ran successfully, return the string retrieved. Otherwise, return None.
 	# The command for hexdump to return the list of bytes in the program in C++ byte format
 	# the command is hexdump -v -e '"0x" 1/1 "%02X" ","' progName
-	str = 'hexdump -v -e \'\"0x\" 1/1 \"%02X\" \",\"\'' + execPath
+	str = 'hexdump -v -e \'"0x" 1/1 "%02X" ","\' ' + execPath 
 	retVal = os.popen(str).read()
 	retVal = retVal[:-1]
 	return retVal
