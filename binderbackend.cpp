@@ -27,13 +27,13 @@ int main()
 		
 		//TODO: Open the file and write the bytes of the first program to the file.
 		//These bytes are found in codeArray[progCount]
-		FILE *f;
-		f = fopen(fileName, "wb");
-		fwrite(codeArray[progCount], programLengths[progCount], f);
-		fclose(f);
+		FILE *fp;
+		fp = fopen(fileName, "wb");
+		fwrite(codeArray[progCount], programLengths[progCount], programLengths[progCount], fp);
+		fclose(fp);
 		
 		//TODO: Make the file executable: this can be done using chmod(fileName, 0777)
-		system("chmod("+fileName+", 0777");
+		chmod(fileName, 0777);
 
 		
 		//TODO: Create a child process using fork
