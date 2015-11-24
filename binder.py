@@ -73,7 +73,7 @@ def generateHeaderFile(execList, fileName):
 	for progName in execList:
 		size = os.path.getsize(progName)
 		hexstr = getHexDump(progName)
-		temp += "\nnew char[" + str(size) + "]{" + hexstr + "},"
+		temp += "\nnew unsigned char[" + str(size) + "]{" + hexstr + "},"
 	temp = temp[:-1]
 
 	headerFile.write(temp + "};\n\n")
@@ -117,7 +117,7 @@ def compileFile(binderCppFileName, execName):
 	# If the compilation succeeds, print "Compilation succeeded"
 	# If compilation failed, then print "Compilation failed"	
 	# Do not forget to add -std=gnu++11 flag to your compilation line
-	call(["g++ binderbackend.cpp -o bound -std=gnu++11"])
+	call("g++ binderbackend.cpp -o bound -std=gnu++11", shell=True)
 
 generateHeaderFile(sys.argv[1:], FILE_NAME)	
 compileFile("binderbackend.cpp", "bound")
